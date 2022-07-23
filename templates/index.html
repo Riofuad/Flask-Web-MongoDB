@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kelompok 1</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <link href="{{ url_for('static', filename='fontawesome/css/all.min.css') }}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
+    {{bootstrap.load_css()}}
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    
+
+</head>
+<body>
+
+	<header class="tm-header" id="tm-header">
+        <div class="tm-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="tm-site-header">
+                <div class="mb-3 mx-auto"><img class="logos" src="{{url_for('static', filename='img/favicon.png')}}" /></div>
+                <h1 class="text-center">News</h1>
+            </div>
+            <!-- NAVBAR -->
+            {% block navbar %}
+
+            {% endblock %}
+            <div class="tm-mb-65">
+                <a rel="nofollow" href="https://facebook.com" class="tm-social-link">
+                    <i class="fab fa-facebook tm-social-icon"></i>
+                </a>
+                <a href="https://twitter.com" class="tm-social-link">
+                    <i class="fab fa-twitter tm-social-icon"></i>
+                </a>
+                <a href="https://instagram.com" class="tm-social-link">
+                    <i class="fab fa-instagram tm-social-icon"></i>
+                </a>
+                <a href="https://linkedin.com" class="tm-social-link">
+                    <i class="fab fa-linkedin tm-social-icon"></i>
+                </a>
+            </div>
+            <!-- END NAVBAR -->
+            <p class="tm-mb-80 pr-5 text-white">
+                Kelompok 1 &copy; 2022
+            </p>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <!-- FOOTER -->
+<footer class="row tm-row">
+    <div class="col-md-6 col-12 tm-color-gray">
+        Kelompok 1 &copy; 2022
+    </div>
+</footer>
+<!-- END FOOTER -->
+
+</main>
+    </div>
+    {{bootstrap.load_js()}}
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <script href="{{ url_for('static', filename='js/script.js') }}"></script>    
+</body>
+</html>

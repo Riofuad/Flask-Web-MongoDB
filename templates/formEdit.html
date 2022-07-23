@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block navbar %}
+<nav class="tm-nav" id="tm-nav">
+    <ul>
+        <li class="tm-nav-item"><a href="{{ url_for('home') }}" class="tm-nav-link">
+            <i class="fas fa-home"></i>
+            Home
+        </a></li>
+        <li class="tm-nav-item active"><a href="{{ url_for('admin') }}" class="tm-nav-link">
+            <i class="fas fa-pen"></i>
+            Admin
+        </a></li>
+        <li class="tm-nav-item"><a href="{{ url_for('about') }}" class="tm-nav-link">
+            <i class="fas fa-users"></i>
+            About Us
+        </a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+<main class="tm-main">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-tittle">Form data</h3>
+        </div>
+        <div class="card-body">
+            <form action="{{request.url}}" method="post">
+                <!-- {{form.hidden_tag}} -->
+                {{wtf.form_field(form.judul)}}
+                {{wtf.form_field(form.penulis)}}
+                {{wtf.form_field(form.description)}}
+                {{wtf.form_field(form.kategori)}}
+                {{wtf.form_field(form.tags)}}
+                {{wtf.form_field(form.tanggal)}}
+                <br>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

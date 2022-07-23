@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link href="{{ url_for('static', filename='fontawesome/css/all.min.css') }}" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    {{bootstrap.load_css()}}
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    
+  </head>
+  <body>
+    <!-- LOGIN -->
+    <section class="class section" id="class">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center mb-5 mt-4">
+            <h2 class="tm-post-title login mx-auto">Login</h2>
+          </div>
+          <div class="card effect1 col-lg-6 mx-auto" id="card-login">
+            <div class="card-body">
+              <form method="POST" action="{{ url_for('login') }}">
+                
+                <div class="form-group">
+                  <label for="Password">Email</label>
+                  <input type="text" class="form-control" name="email" placeholder="" />
+                </div>
+                
+                <div class="form-group">
+                  <label for="Password">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="" />
+                </div>
+  
+                <button type="submit" href="{{ url_for('admin') }}"class="form-control mt-3" id="login-button" name="submit">Login</button>
+                <p class="text-center">or</p>
+              <p class="text-center">
+                Don't have an account?<a href="{{ url_for('register') }}"><strong> Register Now</strong></a>
+              </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END LOGIN -->
+    {{bootstrap.load_js()}}
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <script href="{{ url_for('static', filename='js/script.js') }}""></script>
+    
+  </body>
+</html>

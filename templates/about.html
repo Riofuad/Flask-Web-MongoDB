@@ -1,0 +1,101 @@
+{% extends "index.html" %}
+
+{% block navbar %}
+<nav class="tm-nav" id="tm-nav">
+    <ul>
+        <li class="tm-nav-item"><a href="{{ url_for('home') }}" class="tm-nav-link">
+            <i class="fas fa-home"></i>
+            Home
+        </a></li>
+        <li class="tm-nav-item"><a href="{{ url_for('admin') }}" class="tm-nav-link">
+            <i class="fas fa-pen"></i>
+            Admin
+        </a></li>
+        <li class="tm-nav-item active"><a href="{{ url_for('about') }}" class="tm-nav-link">
+            <i class="fas fa-users"></i>
+            About Us
+        </a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <main class="tm-main">
+            <div class="row tm-row tm-mb-45">
+                <div class="col-12">
+                    <hr class="tm-hr-primary tm-mb-55">
+                    <img src="{{url_for('static', filename='img/bg-about.jpg')}}" alt="Image" class="img-fluid">
+                </div>
+            </div>
+            <div class="row tm-row tm-mb-40">
+                <div class="col-12">
+                    <div class="mb-4">
+                        <h2 class="pt-2 tm-mb-40 tm-color-primary tm-post-title">About this website</h2>
+                        <p>
+                            Assalamualaikum warrahmatullahi wabarakatuh. Selamat datang di Website Article Kelompok 1.
+                            Website ini dibuat untuk memenuhi tugas proyek Sistem Basis Data II. Konten dari website 
+                            ini berupa artikel dan berita berbahasa Indonesia dengan berbagai macam tema yang bisa Anda dapatkan. 
+                            Adapun tools yang digunakan dalam membangun website ini adalah Visual Studio Code atau biasa disingkat 
+                            dengan VSCode, HTML5, CSS dan Bootstrap5, JS, Python3, Flask (WTForms, Jinja template), Mongodb. 
+                            Selamat membaca!   
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row tm-row tm-mb-60">
+                <div class="col-12">
+                    <hr class="tm-hr-primary  tm-mb-55">
+                    <h2 class="pt-2 tm-mb-40 tm-color-primary tm-post-title">Anggota Kelompok</h2>
+                </div>
+                <div class="col-lg-6 tm-mb-60 tm-person-col">
+                    <div class="media tm-person">
+                        <img src="{{url_for('static', filename='img/avatar.png')}}" alt="Image" class="img-fluid mr-4">
+                        <div class="media-body">
+                            <h2 class="tm-color-primary tm-post-title mb-2">Iman Mustika Ismail</h2>
+                            <h3 class="tm-h3 mb-3">H071201050</h3>
+                            <p class="mb-0 tm-line-height-short">
+                                Mahasiswa Ilmu Komputer 2020 Universitas Hasanuddin
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 tm-mb-60 tm-person-col">
+                    <div class="media tm-person">
+                        <img src="{{url_for('static', filename='img/avatar.png')}}" alt="Image" class="img-fluid mr-4">
+                        <div class="media-body">
+                            <h2 class="tm-color-primary tm-post-title mb-2">Faizah Mappayompa</h2>
+                            <h3 class="tm-h3 mb-3">H071201045</h3>
+                            <p class="mb-0 tm-line-height-short">
+                                Mahasiswa Ilmu Komputer 2020 Universitas Hasanuddin
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 tm-mb-60 tm-person-col">
+                    <div class="media tm-person">
+                        <img src="{{url_for('static', filename='img/avatar.png')}}" alt="Image" class="img-fluid mr-4">
+                        <div class="media-body">
+                            <h2 class="tm-color-primary tm-post-title mb-2">Sri Rezkyani Marzuki</h2>
+                            <h3 class="tm-h3 mb-3">H071201044</h3>
+                            <p class="mb-0 tm-line-height-short">
+                                Mahasiswa Ilmu Komputer 2020 Universitas Hasanuddin
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 tm-mb-60 tm-person-col">
+                    <div class="media tm-person">
+                        <img src="{{url_for('static', filename='img/avatar.png')}}" alt="Image" class="img-fluid mr-4">
+                        <div class="media-body">
+                            <h2 class="tm-color-primary tm-post-title mb-2">Adrisumantri Sakri</h2>
+                            <h3 class="tm-h3 mb-3">H071191058</h3>
+                            <p class="mb-0 tm-line-height-short">
+                                Mahasiswa Ilmu Komputer 2019 Universitas Hasanuddin
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}

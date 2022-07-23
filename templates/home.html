@@ -1,0 +1,119 @@
+{% extends "index.html" %}
+
+{% block navbar %}
+<nav class="tm-nav" id="tm-nav">
+    <ul>
+        <li class="tm-nav-item active"><a href="{{ url_for('home') }}" class="tm-nav-link">
+            <i class="fas fa-home"></i>
+            Home
+        </a></li>
+        <li class="tm-nav-item"><a href="{{ url_for('admin') }}" class="tm-nav-link">
+            <i class="fas fa-pen"></i>
+            Admin
+        </a></li>
+        <li class="tm-nav-item"><a href="{{ url_for('about') }}" class="tm-nav-link">
+            <i class="fas fa-users"></i>
+            About Us
+        </a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+<main class="tm-main">
+    
+    <!-- KONTEN HAL UTAMA -->
+    <div class="row tm-row">
+        <div class="row tm-row">
+            {% for a in data %}
+            <article class="col-12 col-md-6 tm-post">
+                <hr class="mb-3 tm-hr-primary" />
+                <!-- <hr class="tm-hr-primary"> -->
+                <a href="{{ url_for('post', id=a.id) }}" class="effect-lily tm-post-link tm-pt-60">
+                    <h2 class="tm-pt-30 tm-color-primary tm-post-title">
+                        {% for t in a.judul.split()[:6] %}
+                            {{ t + " " }}
+                        {% endfor %}
+                        ...
+                    </h2>
+                </a>
+                <p class="tm-pt-30">
+                    {% for t in a.description.split()[:20] %}
+                    {{ t + " " }}
+                    {% endfor %}
+                    ...
+                </p>
+                <div class="d-flex justify-content-between tm-pt-45">
+                    <span class="tm-color-primary">#{{ a.tags }}</span>
+                    <span class="tm-color-primary">{{ a.tanggal.strftime('%A, %d %b %Y') }}</span>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <span> </span>
+                    <span>{{ a.penulis }}</span>
+                </div>
+            </article>
+            {% endfor %}
+
+            <div class="row tm-row tm-mt-40 tm-mb-75">
+                <!-- {{ pagination.info }} -->
+                <div class="tm-prev-next-wrapper mx-auto text-center">
+                    
+                    {% set halamanBaru = halaman - 1 %}
+                    {% if halamanBaru > 0 %}
+                    <a href="{{ url_for('home', halaman=halamanBaru) }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next tm-mr-20">Previous</a>
+                    {% else %}
+                    <a class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Previous</a>
+                    {% endif %}
+                    {% set halamanBaru = halaman + 1 %}
+                    {% if halamanBaru < ((jdata / 4) + 1) %}
+                    <a href="{{ url_for('home', halaman=halamanBaru) }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
+                    {% else %}
+                    <a class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Next</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- sidebar -->
+            <div class="row tm-row">
+                <aside class="col-lg-4 tm-aside-col">
+                    <div class="tm-post-sidebar">
+                        <hr class="mb-3 tm-hr-primary" />
+                        <h2 class="mb-2 tm-post-title tm-color-primary">Popular News</h2>
+                        <figure class="tm-mb-10">
+                            {% for c in popular %}
+                            <figcaption><a href="{{ url_for('post', id=c.id) }}" class="tm-color-primary">{{ c.judul[:50] }}...</a><br>
+                              <span href="">{{ c.penulis }}</span>
+                            </figcaption>
+                            {% endfor %}
+                        </figure>
+                    </div>
+                </aside>
+
+                <aside class="col-lg-4 tm-aside-col">
+                    <div class="tm-post-sidebar">
+                        <hr class="mb-3 tm-hr-primary" />
+                        <h2 class="mb-2 tm-post-title tm-color-primary">Kategori</h2>
+                        <ul class="tm-mb-60 tm-category-list">
+                            {% for b in kategori %}
+                            <li><a href="{{ url_for('kategori', kategori=b.namaKategori) }}" class="tm-color-primary">{{ b.namaKategori }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </aside>
+
+                <aside class="col-lg-4 tm-aside-col">
+                    <div class="tm-post-sidebar">
+                        <hr class="mb-3 tm-hr-primary" />
+                        <h2 class="mb-2 tm-post-title tm-color-primary">Tags</h2>
+                        <div class="tags">
+                            {% for a in tag %}
+                            <span class="tags1"><a href="{% print('/tags/' + a['_id']) %}">#{% print(a["_id"]) %}</a></span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+
+{% block navbar %}
+<nav class="tm-nav" id="tm-nav">
+    <ul>
+        <li class="tm-nav-item"><a href="{{ url_for('home') }}" class="tm-nav-link">
+            <i class="fas fa-home"></i>
+            Home
+        </a></li>
+        <li class="tm-nav-item active"><a href="{{ url_for('admin') }}" class="tm-nav-link">
+            <i class="fas fa-pen"></i>
+            Admin
+        </a></li>
+        <li class="tm-nav-item"><a href="{{ url_for('about') }}" class="tm-nav-link">
+            <i class="fas fa-users"></i>
+            About Us
+        </a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+<main class="tm-main">
+    <div class="card">
+        <div class="card-body">
+            <!--  -->
+            <div style="margin:auto">You are logged in as {{ session['username'] }}</div>
+            <a href="{{ url_for('formData') }}" class="btn btn-md btn-info">Daftar Baru</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-md btn-danger">Log Out</a>
+            <table class="table">
+                <tr>
+                    <th>Action</th>
+                    <th>ID</th>
+                    <th>Judul</th>
+                    <th>Penulis</th>
+                    <th>Description</th>
+                    <!-- <th>Tags</th> -->
+                    <th>Tanggal</th>
+                </tr>
+                {% for a in data %}
+                <tr>
+                    <td>
+                        <a href="{{ url_for('deleteNews', id=a.id) }}" class="btn btn-danger">Hapus</a>
+                        <a href="{{ url_for('editNews', id=a.id) }}" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>{{ a.id }}</td>
+                    <td>{{ a.judul[:30] }}...</td>
+                    <td>{{ a.penulis }}</td>
+                    <td>{{ a.description[:30] }}...</td>
+                    <!-- <td>{{ a.tags }}</td> -->
+                    <td>{{ a.tanggal }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</main>
+{% endblock %}
